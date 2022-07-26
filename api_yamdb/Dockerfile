@@ -2,15 +2,15 @@ FROM python:3.7-slim
 
 RUN mkdir /app
 
-COPY ./requirements.txt /app
+WORKDIR /app
 
-RUN pip3 install -r /app/requirements.txt --no-cache-dir
+COPY ./requirements.txt .
+
+RUN pip3 install -r requirements.txt --no-cache-dir
 
 # Копирование всего содержимого родительской директории (директории приложения) в app
-COPY  ../ /app
-
-WORKDIR /app
+COPY  ../ .
 
 CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000" ] 
 
-LABEL author='aloshchilov' version=1 broken_keyboards=1 
+LABEL author='aloshchilov' version=1 broken_keyboards=2

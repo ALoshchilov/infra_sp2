@@ -38,12 +38,62 @@ docker-compose run web python manage.py makemigrations
 docker-compose run web python manage.py migrate
 ```
 
+
+Для импорта данных из файла фикстур выполните команду:
+
+```
+docker-compose exec web python manage.py loaddata fixtures.json
+```
+
 Не забудьте создать суперпользовавтеля и надежно сохранить его пароль
 
 ```
 docker-compose exec web python manage.py createsuperuser
 ```
 
+### Описание переменных окружения
+
+DB_ENGINE - тип используемой БД
+
+```
+DB_ENGINE=django.db.backends.postgresql
+```
+
+DB_NAME - имя БД
+
+```
+DB_NAME=postgres
+```
+
+POSTGRES_USER - имя пользователя для работы с БД
+
+```
+POSTGRES_USER=postgres
+```
+
+POSTGRES_PASSWORD - пароль пользователя для работы с БД
+
+```
+POSTGRES_PASSWORD=p0$tGre$
+```
+
+DB_HOST - имя сервера или контейнера, в котором размещена БД
+
+```
+DB_HOST=db
+```
+
+DB_PORT - порт подключения к БД
+
+```
+DB_PORT=5432
+```
+
+SECRET_KEY - последовательность для создания хэшей
+
+```
+SECRET_KEY=Hghgsfjg8^yn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs
+```
 
 ### Алгоритм регистрации пользователей
 
